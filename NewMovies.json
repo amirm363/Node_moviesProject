@@ -1,0 +1,16 @@
+{
+  "movies": [
+    {
+      "Id": 250,
+      "Name": "Spider Man",
+      "Language": "English",
+      "Genres": ["Action", "Comedy", "Fantasy"]
+    },
+    {
+      "Id": 251,
+      "Name": "Naruto shippuden",
+      "Language": "Japanese",
+      "Genres": ["Action", "Fantasy", "Mystery"]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<html>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1>Create New Movie</h1>
+    <form action="/createNewMovie" method="post">
+      Movie Name: <input type="text" name="name" /><br />
+      Language: <input type="text" name="lang" /><br />
+      Genres: <br />
+      Action<input type="checkbox" name="genre" value="Action" /> Comedy<input
+        type="checkbox"
+        name="genre"
+        value="Comedy"
+      />
+      Drama<input type="checkbox" name="genre" value="Drama" /> Fantasy<input
+        type="checkbox"
+        name="genre"
+        value="Fantasy"
+      />
+      Horror<input type="checkbox" name="genre" value="Horror" /> Mystery<input
+        type="checkbox"
+        name="genre"
+        value="Mystery"
+      />
+      Romance<input type="checkbox" name="genre" value="Romance" /> Thriller
+      <input type="checkbox" name="genre" value="Thriller" /><br />
+      <input type="submit" name="submit" value="Submit" />
+    </form>
+  </body>
+</html>
