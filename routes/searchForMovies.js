@@ -10,9 +10,17 @@ router.get("/", auth.verifyAccessToken, (req, res, next) => {
 // Searches for movies in the db+api
 router.post("/", async (req, res, next) => {
   console.log(req.body);
-  await moviesBL.searchMovies();
-  // await moviesBL.addMovie(req.body);
-  res.redirect("/menu");
+  if (
+    req.body.name == "" &&
+    req.body.languages == "blank" &&
+    req.body.genres == "blank"
+  ) {
+    res.redirect(403, "/menu");
+  }
+  const movies = await moviesBL.searchMovies(req.body);
+  movies.length == 0
+    ? res.send("Sorry you'r search results came back empty")
+    : res.render("searchResultsPage", { movies });
 });
 
 module.exports = router;

@@ -1,16 +1,22 @@
 {
   "movies": [
     {
-      "Id": 250,
-      "Name": "Spider Man",
-      "Language": "English",
-      "Genres": ["Action", "Comedy", "Fantasy"]
+      "id": 250,
+      "name": "Spider Man",
+      "language": "Hebrew",
+      "genres": ["Action", "Comedy", "Fantasy"]
     },
     {
-      "Id": 251,
-      "Name": "Naruto shippuden",
-      "Language": "Japanese",
-      "Genres": ["Action", "Fantasy", "Mystery"]
+      "id": 251,
+      "name": "Naruto shippuden",
+      "language": "Japanese",
+      "genres": ["Action", "Fantasy", "Mystery"]
+    },
+    {
+      "id": 252,
+      "name": "Law & order",
+      "language": "English",
+      "genres": ["Drama", "Mystery"]
     }
   ]
 }

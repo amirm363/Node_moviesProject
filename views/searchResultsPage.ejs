@@ -1,0 +1,21 @@
+<html>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <table border="1">
+      <%movies.forEach(m => {%>
+      <tr>
+        <td><a href="<%=m.name%>"><%=m.name%></a></td>
+        <td>
+          <%m.genres.forEach(g => {%>
+          <a href="<%=g%>"><%=g%></a>
+          <%})%>
+        </td>
+      </tr>
+      <%})%>
+    </table>
+  </body>
+</html>
