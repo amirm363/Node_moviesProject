@@ -45,6 +45,7 @@ const searchMovies = async (data) => {
     genre: data.genres != "blank" ? true : false,
     language: data.languages != "blank" ? true : false,
   };
+  //   console.log(dataFlags);
   if (dataFlags.name) {
     capAndUnCap = [
       data.name.toLowerCase(),

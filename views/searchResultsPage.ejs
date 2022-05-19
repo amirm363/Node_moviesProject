@@ -8,14 +8,26 @@
     <table border="1">
       <%movies.forEach(m => {%>
       <tr>
-        <td><a href="<%=m.name%>"><%=m.name%></a></td>
+        <td>
+          <a
+            href="/searchForMovies/movieData/name?name=<%=m.name%>&genres=blank&languages=blank"
+            ><%=m.name%></a
+          >
+        </td>
         <td>
           <%m.genres.forEach(g => {%>
-          <a href="<%=g%>"><%=g%></a>
+          <a
+            href="/searchForMovies/movieData/genre?name=&genres=<%=g%>&languages=blank"
+            ><%=g%></a
+          >
           <%})%>
         </td>
       </tr>
       <%})%>
     </table>
+    <br />
+
+    <br />
+    <button onclick="window.location.href = '/menu';">Back to menu</button>
   </body>
 </html>

@@ -1,0 +1,23 @@
+<html>
+  <style>
+    div {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <button onclick="window.location.href='/menu'">Back to menu</button
+    ><br /><br /><br />
+    <div>
+      <%movie.forEach(m => {%> Movie ID: <%=m.id%><br />
+      Movie Name: <%=m.name%><br />
+      Movie Genres: <%=[...m.genres]%><br />
+      Movie Language: <%=m.language%><br />
+      <%if(m.image != null){%>
+      <img src="<%=m.image.medium%>" />
+      <%}%>
+      <hr border="3" />
+
+      <%})%>
+    </div>
+  </body>
+</html>
