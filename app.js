@@ -11,6 +11,7 @@ var createUserRouter = require("./routes/createUser");
 var createMovieRouter = require("./routes/createNewMovie");
 var searchMoviesRouter = require("./routes/searchForMovies");
 var movieDataRouter = require("./routes/movieData");
+var usersManagmentRouter = require("./routes/usersManagment");
 
 var app = express();
 app.use(cors());
@@ -32,6 +33,7 @@ app.use("/createUser", createUserRouter);
 app.use("/createNewMovie", createMovieRouter);
 app.use("/searchForMovies", searchMoviesRouter);
 app.use("/searchForMovies/movieData", movieDataRouter);
+app.use("/usersManagment", usersManagmentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

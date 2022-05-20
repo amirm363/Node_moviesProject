@@ -22,5 +22,14 @@ const addUser = (user) => {
     }
   });
 };
+const deleteUser = (user, username) => {
+  jFile.writeFile(__dirname + "/../Users.json", user, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(`${username} has been deleted`);
+    }
+  });
+};
 
-module.exports = { getUsers, addUser };
+module.exports = { getUsers, addUser, deleteUser };

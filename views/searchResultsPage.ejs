@@ -9,17 +9,11 @@
       <%movies.forEach(m => {%>
       <tr>
         <td>
-          <a
-            href="/searchForMovies/movieData/name?name=<%=m.name%>&genres=blank&languages=blank"
-            ><%=m.name%></a
-          >
+          <a href="/searchForMovies/movieData/name|<%=m.name%>"><%=m.name%></a>
         </td>
         <td>
           <%m.genres.forEach(g => {%>
-          <a
-            href="/searchForMovies/movieData/genre?name=&genres=<%=g%>&languages=blank"
-            ><%=g%></a
-          >
+          <a href="/searchForMovies/movieData/genre|<%=g%>"><%=g%></a>
           <%})%>
         </td>
       </tr>

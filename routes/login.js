@@ -14,14 +14,16 @@ router.post("/", async (req, res, next) => {
   let user = await usersBL.checkCred(req.body);
   // console.log(user);
   let token = {};
-  user == null
-    ? res.send("Wrong User Name or Password")
-    : (token = usersBL.jwtGenerateToken(user));
-  res.cookie("token", token, {
-    httpOnly: true,
-  });
+  if (user == null) {
+    res.render("error", { message: "Username or Password were incorrect" });
+  } else {
+    token = usersBL.jwtGenerateToken(user);
+    res.cookie("token", token, {
+      httpOnly: true,
+    });
 
-  res.redirect("/menu");
+    res.redirect("/menu");
+  }
 });
 
 module.exports = router;

@@ -50,6 +50,18 @@ const jwtGenerateToken = (user) => {
   return jwt.sign(user, process.env.MY_SECRET, { expiresIn: "24h" });
 };
 
+const deleteUser = async (user) => {
+  const users = await getUsers();
+  userIndex = users.users.findIndex((u, index) => {
+    if (u.username == user) return index;
+  });
+  if (userIndex == -1) {
+    userIndex++;
+  }
+  users.users.splice(userIndex, 1);
+  // console.log(users);
+  usersFileDAL.deleteUser(users, user);
+};
 const reduceTransaction = () => {};
 
 module.exports = {
@@ -57,4 +69,5 @@ module.exports = {
   addUser,
   checkCred,
   jwtGenerateToken,
+  deleteUser,
 };
