@@ -1,0 +1,68 @@
+<html>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1>User Data Page</h1>
+    <form action="/userData" method="post">
+      <% if(user != null) {%> Username:
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        value="<%=user.username%>"
+      /><br />
+      Password:
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value="<%=user.password%>"
+      />
+      <br />
+      Date Created:<input
+        type="text"
+        name="date"
+        placeholder="DD.MM.YYYY"
+        onfocus="(this.type='date')"
+        value="<%=user.date%>"
+      />
+      <br />
+      Num of Transactions:
+      <input
+        type="number"
+        name="transactions"
+        placeholder="Transactions"
+        value="<%=user.transactions%>"
+      />
+
+      <br />
+      <%} else {%> Username:
+      <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        value=""
+      /><br />
+      Password:
+      <input
+        type="text"
+        name="password"
+        placeholder="Password"
+        value=""
+      /><br />
+      Date Created:<input type="date" name="date" value="" /><br />
+      Num of Transactions:
+      <input
+        type="number"
+        name="transactions"
+        placeholder="Transactions"
+        value=""
+      /><br />
+      <%}%>
+      <input type="submit" name="submit" value="save" />
+    </form>
+  </body>
+</html>

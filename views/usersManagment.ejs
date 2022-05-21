@@ -16,10 +16,11 @@
       <ul>
         <%=user.username%>
         <a href="/usersManagment/<%=user.username%>">DELETE</a>
-        <a href="/userData">UPDATE</a>
+        <a href="/userData/<%=user.username%>">UPDATE</a>
       </ul>
 
       <% })%>
+      <a href="/userData">Add New</a>
     </list>
   </body>
 </html>

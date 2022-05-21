@@ -8,7 +8,7 @@ const getUsers = () => {
 };
 
 // Logic of adding a new user
-const addUser = async (user) => {
+const addUser = async (user, date = new Date().toLocaleDateString("iw-IL")) => {
   let users = await usersFileDAL.getUsers();
   if (users.users.find((x) => x.username == user.username)) {
     return false;
@@ -19,7 +19,7 @@ const addUser = async (user) => {
     newUser = {
       username: user.username,
       password: hashedPassword,
-      date: new Date(),
+      date: date,
       transactions: 10,
     };
     users.users.push(newUser);
@@ -29,6 +29,10 @@ const addUser = async (user) => {
   } catch {
     return;
   }
+};
+
+const updateUser = async (user) => {
+  await usersFileDAL.addUser(user);
 };
 
 // Allows user to login
@@ -70,4 +74,5 @@ module.exports = {
   checkCred,
   jwtGenerateToken,
   deleteUser,
+  updateUser,
 };

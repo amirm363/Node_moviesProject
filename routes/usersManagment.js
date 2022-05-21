@@ -13,11 +13,12 @@ router.get("/", auth.verifyAccessToken, async (req, res, next) => {
   ) {
     res.send("You are not logged in as admin");
   }
-  console.log(users);
+  // console.log(users);
+  res.clearCookie("user");
   res.render("usersManagment", { users: users.users });
 });
 
-router.get("/:username", auth.verifyAccessToken, async (req, res, next) => {
+router.delete("/:username", auth.verifyAccessToken, async (req, res, next) => {
   usersBL.deleteUser(req.params.username);
   let user = 0;
   res.redirect("/menu");
