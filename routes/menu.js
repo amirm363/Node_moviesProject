@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../middleware/auth");
+const { verifyAccessToken, updateData } = require("../middleware/auth");
+const sessionBL = require("../models/sessionBL");
 
 // Verifies the user token and renders the menu page for him
-router.get("/", auth.verifyAccessToken, (req, res, next) => {
-  // console.log(req.user);
+router.get("/", [verifyAccessToken, updateData], async (req, res, next) => {
+  data = await sessionBL.getData();
+  console.log(req.session.authenticated);
   res.render("menu", { user: req.user.userIndex });
 });
 

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const moviesBL = require("../models/moviesBL");
-const auth = require("../middleware/auth");
+const { verifyAccessToken } = require("../middleware/auth");
 
-router.get("/:data", auth.verifyAccessToken, async (req, res, next) => {
+router.get("/:data", verifyAccessToken, async (req, res, next) => {
   //   console.log(req.params.data.split("|"));
   data = req.params.data.split("|")[1];
   let movie =

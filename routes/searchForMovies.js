@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const moviesBL = require("../models/moviesBL");
-const auth = require("../middleware/auth");
+const { verifyAccessToken } = require("../middleware/auth");
 
 // Renders searchForMovies page
-router.get("/", auth.verifyAccessToken, (req, res, next) => {
+router.get("/", verifyAccessToken, (req, res, next) => {
   res.render("searchForMovies", {});
 });
 // Searches for movies in the db+api

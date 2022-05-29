@@ -8,7 +8,11 @@ const getUsers = () => {
 };
 
 // Logic of adding a new user
-const addUser = async (user, date = new Date().toLocaleDateString("iw-IL")) => {
+const addUser = async (
+  user,
+  date = new Date().toLocaleDateString("iw-IL"),
+  trans = 10
+) => {
   let users = await usersFileDAL.getUsers();
   if (users.users.find((x) => x.username == user.username)) {
     return false;
@@ -20,7 +24,7 @@ const addUser = async (user, date = new Date().toLocaleDateString("iw-IL")) => {
       username: user.username,
       password: hashedPassword,
       date: date,
-      transactions: 10,
+      transactions: trans,
     };
     users.users.push(newUser);
     usersFileDAL.addUser(users);
