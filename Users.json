@@ -4,19 +4,19 @@
       "username": "amir363",
       "password": "$2a$05$XBgrWhV42Kg6LgdOu6ho/ukcKzNvNOqaPbO9d9lhf/6wDjUfb0fxq",
       "date": "21.5.2022",
-      "transactions": "00"
+      "transactions": -1
     },
     {
       "username": "dan123",
       "password": "$2a$05$aUzs0e0PakSfOZ0BW9b.HO5rijiZzfpCucZhic06XK9CCM2wfRFkm",
       "date": "19.5.2022",
-      "transactions": "9"
+      "transactions": 9
     },
     {
       "username": "shalev",
       "password": "$2a$05$QFch5ADpN4TGPduvahCoNer6/.7ZimbD.5b2qIp2dzWjYDYI5Q3sO",
       "date": "21.5.2022",
-      "transactions": "115"
+      "transactions": 10
     },
     {
       "username": "yogev",

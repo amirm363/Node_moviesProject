@@ -62,7 +62,7 @@ const searchMovies = async (data) => {
   allMovies = !dataFlags.language
     ? allMovies
     : searchLang(allMovies, data.languages);
-  console.log(allMovies);
+  // console.log(allMovies);
   return allMovies;
 };
 

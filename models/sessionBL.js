@@ -1,9 +1,8 @@
-const session = require("./sessionModel");
 const userModel = require("./userDataModel");
 
 const getData = (userName) => {
   return new Promise((resolve, reject) => {
-    session.findOne({ User: userName }, (err, data) => {
+    userModel.findOne({ User: userName }, (err, data) => {
       if (err) {
         reject(err);
       } else {
@@ -32,8 +31,8 @@ const saveDate = (user) => {
 const updateData = (data) => {
   return new Promise((resolve, reject) => {
     userModel.findOneAndUpdate(
-      { User: data.username },
-      { $dec: { transactions: 1 } },
+      { User: data },
+      { $inc: { Transactions: -1 } },
       (err, data) => {
         if (err) {
           reject(err);
@@ -45,4 +44,34 @@ const updateData = (data) => {
   });
 };
 
-module.exports = { getData, saveDate, updateData };
+const refreshUser = (user) => {
+  return new Promise((resolve, reject) => {
+    userModel.findOneAndUpdate(
+      { User: user },
+      { Transactions: 10, Date: new Date() },
+      (err, data) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      }
+    );
+  });
+};
+
+const checkDate = async (user) => {
+  const userData = await getData(user);
+  msBetweenDate = Math.abs(userData.Date.getTime() - new Date().getTime());
+  const hoursBetweenDates = msBetweenDate / (60 * 60 * 1000);
+
+  if (hoursBetweenDates > 24) {
+    if (userData >= 0) {
+      refreshUser(userData.User);
+    }
+    return true;
+  }
+  return false;
+};
+
+module.exports = { getData, saveDate, updateData, checkDate, refreshUser };

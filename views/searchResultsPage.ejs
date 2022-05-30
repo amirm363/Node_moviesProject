@@ -3,6 +3,11 @@
     body {
       text-align: center;
     }
+    button#logout {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   </style>
   <body>
     <table border="1">
@@ -23,5 +28,9 @@
 
     <br />
     <button onclick="window.location.href = '/menu';">Back to menu</button>
+    <div class="logout">
+      <button id="logout" onclick="window.location.href = '/logout'">
+        Logout
+      </button>
   </body>
 </html>

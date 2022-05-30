@@ -3,6 +3,16 @@
     body {
       text-align: center;
     }
+    button#logout {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    button#backtomenu {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
   </style>
   <body>
     <h1>Create New Movie</h1>
@@ -29,5 +39,11 @@
       <input type="checkbox" name="genre" value="Thriller" /><br />
       <input type="submit" name="submit" value="Submit" />
     </form>
+    <button id="logout" onclick="window.location.href = '/logout'">
+      Logout
+    </button>
+    <button id="backtomenu" onclick="window.location.href = '/menu';">
+      Back to menu
+    </button>
   </body>
 </html>

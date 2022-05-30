@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 // Verifies the user token and renders the menu page for him
 router.get("/", verifyAccessToken, async (req, res, next) => {
   const users = await usersBL.getUsers();
-  if (users.users[0].username != req.session.authenticated.user.user.username) {
+  if (users.users[0].username != req.session.authenticated.username) {
     res.send("You are not logged in as admin");
   }
   // console.log(users);

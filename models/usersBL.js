@@ -1,6 +1,8 @@
 const usersFileDAL = require("../DALs/usersFileDAL");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const sessionBL = require("./sessionBL");
+const res = require("express/lib/response");
 
 // Passes getUsers function to routes layer
 const getUsers = () => {
@@ -70,7 +72,6 @@ const deleteUser = async (user) => {
   // console.log(users);
   usersFileDAL.deleteUser(users, user);
 };
-const reduceTransaction = () => {};
 
 module.exports = {
   getUsers,

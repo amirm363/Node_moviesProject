@@ -46,8 +46,6 @@ router.post("/", verifyAccessToken, async (req, res, next) => {
     usersBL.addUser({
       username: req.body.username,
       password: req.body.password,
-      //   date: req.body.date,
-      //   transactions: req.body.transactions,
     });
     res.redirect("/usersManagment");
   }

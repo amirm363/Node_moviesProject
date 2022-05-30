@@ -4,14 +4,18 @@ const usersBL = require("../models/usersBL");
 const sessionBL = require("../models/sessionBL");
 
 // Renders the login page
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
   req.session.authenticated ? res.redirect("/menu") : res.render("login", {});
 });
 
-// Check user credentials, allows login and redirects to the menu page
-router.post("/", async (req, res) => {
-  const user = await usersBL.checkCred(req.body);
+router.get("/logout", (req, res, next) => {
+  req.session = null;
+  res.redirect("/");
+});
 
+// Check user credentials, allows login and redirects to the menu page
+router.post("/", async (req, res, next) => {
+  const user = await usersBL.checkCred(req.body);
   if (user == null) {
     res.render("error", { message: "Username or Password were incorrect" });
   } else {
@@ -24,16 +28,35 @@ router.post("/", async (req, res) => {
         dateLoggedIn: new Date(),
         token,
       };
-      sessionBL.saveDate({
-        User: user.user.username,
-        Transactions: user.user.transactions,
-        Date: new Date(),
-      });
+      console.log(await sessionBL.getData(req.body.username));
+      if (!(await sessionBL.getData(req.body.username)))
+        try {
+          await sessionBL.saveDate({
+            User: user.user.username,
+            Transactions: user.user.transactions,
+            Date: new Date(),
+          });
+        } catch (e) {
+          console.log(e);
+        }
     }
-
-    // console.log(req.session.authenticated);
-
-    res.redirect("/menu");
+    const userDBdata = await sessionBL.getData(req.body.username);
+    console.log(userDBdata);
+    if (
+      userDBdata.Transactions != 0 ||
+      (await sessionBL.checkDate(req.body.username))
+    ) {
+      res.redirect("/menu");
+    } else {
+      try {
+        res.render("error", {
+          message:
+            "You've exceeded the limit of transactions for those 24 hours, please try again the next day",
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
 });
 

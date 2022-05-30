@@ -3,6 +3,11 @@
     body {
       text-align: center;
     }
+    button#logout {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   </style>
 
   <body>
@@ -12,6 +17,10 @@
     <% if(user == 0){%>
     <a href="usersManagment" onload="check()">Edit Users </a>
     <% } %>
-    <button></button>
+    <div class="logout">
+      <button id="logout" onclick="window.location.href = '/logout'">
+        Logout
+      </button>
+    </div>
   </body>
 </html>
