@@ -39,13 +39,13 @@ const searchMovies = async (data) => {
   let wsMovies = await movieWsDAL.getMovies();
   let fileMovies = await movieWsDAL.getFromFile();
   let allMovies = wsMovies.data.concat(fileMovies.movies);
-  let capAndUnCap = [];
+
   let dataFlags = {
     name: data.name != "" ? true : false,
     genre: data.genres != "blank" ? true : false,
     language: data.languages != "blank" ? true : false,
   };
-  //   console.log(dataFlags);
+
   if (dataFlags.name) {
     capAndUnCap = [
       data.name.toLowerCase(),
@@ -62,21 +62,18 @@ const searchMovies = async (data) => {
   allMovies = !dataFlags.language
     ? allMovies
     : searchLang(allMovies, data.languages);
-  // console.log(allMovies);
+
   return allMovies;
 };
 
 // Function that searches by name
 const searchName = (moviesArray, data) => {
+  regexName = new RegExp(data, "gi");
   let moviesWsArr = moviesArray.filter((m) => {
-    if (
-      m.name.includes(data.toLowerCase()) ||
-      m.name.includes(data.at(0).toUpperCase() + data.slice(1))
-    ) {
+    if (regexName.test(m.name)) {
       return m;
     }
   });
-  //   console.log(moviesWsArr);
   return moviesWsArr;
 };
 

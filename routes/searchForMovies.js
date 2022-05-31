@@ -9,7 +9,6 @@ router.get("/", verifyAccessToken, (req, res, next) => {
 });
 // Searches for movies in the db+api
 router.post("/", updateTransactions, async (req, res, next) => {
-  // console.log(req.body);
   if (
     req.body.name == "" &&
     req.body.languages == "blank" &&

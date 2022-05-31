@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
 });
 // Creates new user
 router.post("/", async (req, res, next) => {
-  console.log(await usersBL.addUser(req.body));
+  await usersBL.addUser(req.body);
   res.redirect("/");
 });
 

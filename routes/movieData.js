@@ -4,7 +4,6 @@ const moviesBL = require("../models/moviesBL");
 const { verifyAccessToken } = require("../middleware/auth");
 
 router.get("/:data", verifyAccessToken, async (req, res, next) => {
-  //   console.log(req.params.data.split("|"));
   data = req.params.data.split("|")[1];
   let movie =
     req.params.data.split("|")[0] == "name"
@@ -19,17 +18,7 @@ router.get("/:data", verifyAccessToken, async (req, res, next) => {
           languages: "blank",
         });
 
-  console.log(movie);
   res.render("movieData", { movie });
 });
-
-// router.post("/*", auth.verifyAccessToken, async (req, res, next) => {
-//   console.log(req.params.name);
-//   let correctedName = req.query.name.replace("%2", " ");
-
-//   let movie = await moviesBL.getMovies(req.query);
-//   console.log(movie);
-//   res.render("movieData", movie);
-// });
 
 module.exports = router;

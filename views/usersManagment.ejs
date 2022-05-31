@@ -4,12 +4,18 @@
       text-align: center;
     }
     body {
+      position: relative;
       text-align: center;
     }
     button#logout {
       position: absolute;
       top: 0;
       right: 0;
+    }
+    button#backtomenu {
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
   </style>
   <head>
@@ -31,5 +37,6 @@
       <button id="logout" onclick="window.location.href = '/logout'">
         Logout
       </button>
-  </body>
+      <button id='backtomenu'onclick="window.location.href = '/menu';">Back to menu</button>
+    </body>
 </html>

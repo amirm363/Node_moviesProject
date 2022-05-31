@@ -10,13 +10,12 @@ router.get("/", verifyAccessToken, async (req, res, next) => {
   if (users.users[0].username != req.session.authenticated.username) {
     res.send("You are not logged in as admin");
   }
-  // console.log(users);
   res.clearCookie("userToUpdate");
   res.render("usersManagment", { users: users.users });
 });
 
+// Route that allows admin to delete a user
 router.get("/:username", verifyAccessToken, async (req, res, next) => {
-  console.log(req.params);
   usersBL.deleteUser(req.params.username);
 
   res.redirect("/menu");

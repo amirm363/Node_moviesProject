@@ -15,15 +15,13 @@ const verifyAccessToken = (req, res, next) => {
     return res.redirect("http://localhost:3000/");
   }
 };
-
+// Middleware that reduces 1 from "transaction" field of the user
 const updateTransactions = async (req, res, next) => {
-  console.log("+++++++++++++++++++++++++++++++++++++");
   user = await sessionBL.getData(req.session.authenticated.username);
   console.log(user.Transactions);
   if (user.Transactions > 0) {
     try {
       await sessionBL.updateData(req.session.authenticated.username);
-      console.log("---------------------------");
       next();
     } catch (e) {
       console.log(e);

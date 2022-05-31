@@ -9,7 +9,6 @@ router.get("/", verifyAccessToken, (req, res, next) => {
 });
 // Adds new movie
 router.post("/", updateTransactions, async (req, res, next) => {
-  console.log(req.body);
   await moviesBL.addMovie(req.body);
   res.redirect("/menu");
 });

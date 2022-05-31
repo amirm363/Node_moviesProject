@@ -8,6 +8,7 @@ router.get("/", async (req, res, next) => {
   req.session.authenticated ? res.redirect("/menu") : res.render("login", {});
 });
 
+// Logs the user out and end the session
 router.get("/logout", (req, res, next) => {
   req.session = null;
   res.redirect("/");
@@ -28,7 +29,7 @@ router.post("/", async (req, res, next) => {
         dateLoggedIn: new Date(),
         token,
       };
-      console.log(await sessionBL.getData(req.body.username));
+      await sessionBL.getData(req.body.username);
       if (!(await sessionBL.getData(req.body.username)))
         try {
           await sessionBL.saveDate({
@@ -41,7 +42,6 @@ router.post("/", async (req, res, next) => {
         }
     }
     const userDBdata = await sessionBL.getData(req.body.username);
-    console.log(userDBdata);
     if (
       userDBdata.Transactions != 0 ||
       (await sessionBL.checkDate(req.body.username))

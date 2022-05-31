@@ -1,5 +1,6 @@
 const userModel = require("./userDataModel");
 
+// Function that gets specific user data filterd by its user name (from DB)
 const getData = (userName) => {
   return new Promise((resolve, reject) => {
     userModel.findOne({ User: userName }, (err, data) => {
@@ -12,6 +13,7 @@ const getData = (userName) => {
   });
 };
 
+// Function that saves new user into DB
 const saveDate = (user) => {
   console.log(user);
   return new Promise((resolve, reject) => {
@@ -28,6 +30,7 @@ const saveDate = (user) => {
   });
 };
 
+// Function that decresess by 1 the Transacion field of specific user in DB
 const updateData = (data) => {
   return new Promise((resolve, reject) => {
     userModel.findOneAndUpdate(
@@ -44,6 +47,7 @@ const updateData = (data) => {
   });
 };
 
+// Function that resotres the user data to "default" when 24 hours passed from its last login.
 const refreshUser = (user) => {
   return new Promise((resolve, reject) => {
     userModel.findOneAndUpdate(
@@ -60,6 +64,7 @@ const refreshUser = (user) => {
   });
 };
 
+// Function that checks if 24 hours has passed from the users last login.
 const checkDate = async (user) => {
   const userData = await getData(user);
   msBetweenDate = Math.abs(userData.Date.getTime() - new Date().getTime());

@@ -22,6 +22,8 @@ const addUser = (user) => {
     }
   });
 };
+
+// Deletes a user from json file
 const deleteUser = (user, username) => {
   jFile.writeFile(__dirname + "/../Users.json", user, (err, data) => {
     if (err) {
